@@ -2,34 +2,17 @@ const express = require('express')
 
 const app = express(); //initalizer
 
-// ab, abc
-app.get("/ab?c",(req,res)=>{
+// http://localhost:3000/user
+app.get("/user",(req,res)=>{
+    console.log(req.query)
     res.send({firstName:'Akshay',lastName:'Saini'})
 })
 
-// abc, abbbbbbbc
-app.get("/ab+c",(req,res)=>{
-    res.send("Hello")
+// http://localhost:3000/user/101
+app.get("/user/:userId/:name",(req,res)=>{
+    console.log(req.params)
 })
 
-// abAKSHAYcd
-app.get("/ab*cd",(req,res)=>{
-    res.send("Hellp")
-})
-
-// ad, abcd
-app.get("/a(bc)?d",(req,res)=>{
-    res.send("Hello")
-})
-
-// works if path contains a
-app.get(/a/,(req,res)=>{
-    res.send("if a then works")
-})
-
-app.post("/user",(req,res)=>{
-    res.send("Data saved successfully to the database")
-})
 
 
 app.listen(3000) //listener
